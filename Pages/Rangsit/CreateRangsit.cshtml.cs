@@ -31,21 +31,23 @@ namespace InventorySystem.Pages.Rangsit
             }
             try
             {
-                String connectionString = "Server=tcp:inventory1087.database.windows.net,1433;Initial Catalog=Inventory;Persist Security Info=False;User ID=pattapol;Password=Bomb1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                String connectionString = "Server=tcp:inventory321.database.windows.net,1433;Initial Catalog=inventory1;Persist Security Info=False;User ID=thanthita.korn;Password=Tnktkn300618_;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
-                    String sql = "INSERT INTO stocks " +
-                                 "(item, storeid, supplier, amount) VALUES " +
-                                 "(@item, @storeid, @supplier, @amount);";
-                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@item", stockInfo.item);
-                        command.Parameters.AddWithValue("@storeid", stockInfo.storeid);
-                        command.Parameters.AddWithValue("@supplier", stockInfo.supplier);
-                        command.Parameters.AddWithValue("@amount", stockInfo.amount);
+                        connection.Open();
+                        String sql = "INSERT INTO stocks " +
+                                     "(item, storeid, supplier, amount) VALUES " +
+                                     "(@item, @storeid, @supplier, @amount);";
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@item", stockInfo.item);
+                            command.Parameters.AddWithValue("@storeid", stockInfo.storeid);
+                            command.Parameters.AddWithValue("@supplier", stockInfo.supplier);
+                            command.Parameters.AddWithValue("@amount", stockInfo.amount);
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
+                        }
                     }
                 }
             }
